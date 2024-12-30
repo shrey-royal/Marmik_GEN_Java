@@ -22,7 +22,8 @@ class Clock extends Time {
     }
 
     public Clock(int hours, int minutes, int seconds) {
-        super(hours, minutes, seconds);
+        super(hours, minutes, seconds); //this statement must be at the top of the constructor 
+        System.out.println("This is Super constructor");
     }
 
     // Method to advance the clock by one second
