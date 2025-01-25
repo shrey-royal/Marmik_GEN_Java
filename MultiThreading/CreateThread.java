@@ -21,9 +21,18 @@ public class CreateThread {
         MyThread t1 = new MyThread("T1");
         MyThread t2 = new MyThread("T2");
 
+        // t1.run();
         t1.start();
+        // System.out.println(t1.getState());
         t2.start();
 
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        t1.interrupt();
+        System.out.println(t1.getState());
     }
 }
 
