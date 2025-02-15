@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class ReadWriteFiles {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ReadWriteHandler handler = new ReadWriteHandler();
+//        ReadWriteHandler handler = new ReadWriteHandler();
+        StreamHandler handler = new StreamHandler();
         String fileName = "";
         int choice;
 
