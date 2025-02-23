@@ -1,0 +1,103 @@
+JDBC Connection: Java 2 Database Connectivity
+
+Basic Operations to be performed in this part:
+
+1. Inserting data
+2. Getting/Retrieving all data / Retrieve User Specific Data
+3. Updating data
+4. Deleting data
+
+--------------------------------------------------------------------------------------------
+JDBC: Java To Database Connectivity
+
+using Jdbc we can connect to any database from java program.
+
+Steps to connect to database from java program. 
+
+1. Load the driver class. (Act as bridge between java program and database)
+2. Create connection (connect to database)
+3. Create statement  (create sql query to execute)
+4. Execute query (execute/run sql query)
+5. Close connection (close connection to database)
+
+CheatSheet: 
+https://learnsql.com/blog/mysql-cheat-sheet/mysql-cheat-sheet-a4.pdf
+--------------------------------------------------------------------------------------------
+
+Table:
+
+CREATE TABLE Salesman (
+    salesman_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    salary DECIMAL(10, 2) NOT NULL,
+    car_sales_per_month INT,
+    car_model_sold VARCHAR(100),
+    commission DECIMAL(10, 2) AS (car_sales_per_month * 0.05),
+    hire_date DATE
+);
+
+ALTER TABLE Salesman
+ADD CONSTRAINT chk_salary_positive CHECK (salary >= 0),
+ADD CONSTRAINT chk_commission_non_negative CHECK (commission >= 0),
+ADD CONSTRAINT chk_car_sales_per_month_positive CHECK (car_sales_per_month >= 0);
+
+INSERT INTO Salesman (first_name, last_name, salary, car_sales_per_month, car_model_sold, hire_date)
+VALUES
+('Amit', 'Sharma', 50000.00, 10, 'Maruti Suzuki Swift', '2020-01-15'),
+('Raj', 'Patel', 45000.00, 8, 'Hyundai Creta', '2019-06-01'),
+('Priya', 'Singh', 55000.00, 12, 'Tata Nexon', '2021-03-10'),
+('Vikram', 'Verma', 60000.00, 15, 'Mahindra XUV700', '2018-12-20'),
+('Anjali', 'Gupta', 48000.00, 7, 'Honda City', '2020-09-05'),
+('Ravi', 'Reddy', 53000.00, 9, 'Toyota Innova', '2019-11-12'),
+('Kavita', 'Iyer', 46000.00, 11, 'Maruti Suzuki Baleno', '2021-05-20'),
+('Sandeep', 'Joshi', 49000.00, 5, 'Ford EcoSport', '2020-07-14'),
+('Manoj', 'Kumar', 47000.00, 6, 'Renault Kwid', '2022-02-10'),
+('Nisha', 'Desai', 55000.00, 13, 'Kia Seltos', '2021-08-15'),
+('Ajay', 'Bansal', 48000.00, 10, 'Hyundai Verna', '2019-10-01'),
+('Sonia', 'Mehta', 53000.00, 14, 'Tata Harrier', '2020-04-23'),
+('Ravi', 'Kumar', 55000.00, 16, 'Mahindra Thar', '2018-09-12'),
+('Neha', 'Singh', 51000.00, 8, 'Maruti Suzuki Dzire', '2020-12-14'),
+('Arvind', 'Shukla', 46000.00, 7, 'Honda WR-V', '2021-11-01'),
+('Anil', 'Verma', 49000.00, 6, 'Skoda Octavia', '2019-07-05'),
+('Shikha', 'Bhatia', 53000.00, 11, 'Nissan Magnite', '2021-02-19'),
+('Yash', 'Chopra', 60000.00, 15, 'Mahindra Scorpio', '2017-08-21'),
+('Sumit', 'Arora', 47000.00, 9, 'Renault Triber', '2020-03-10'),
+('Preeti', 'Sharma', 45000.00, 4, 'Maruti Suzuki Alto', '2021-04-05'),
+('Vikas', 'Rai', 51000.00, 12, 'Kia Carens', '2019-01-15'),
+('Deepika', 'Pillai', 52000.00, 10, 'Ford Figo', '2020-10-01'),
+('Ankur', 'Aggarwal', 57000.00, 14, 'Honda Amaze', '2021-06-25'),
+('Krishna', 'Patel', 54000.00, 13, 'Volkswagen Polo', '2020-05-10'),
+('Aishwarya', 'Bhat', 48000.00, 6, 'Mahindra Bolero', '2022-01-19'),
+('Prakash', 'Nair', 49000.00, 8, 'Tata Tiago', '2021-07-22'),
+('Pooja', 'Mehra', 55000.00, 10, 'Hyundai i20', '2018-11-16'),
+('Siddharth', 'Saxena', 56000.00, 14, 'Maruti Suzuki Ertiga', '2019-05-13'),
+('Vijay', 'Khandelwal', 60000.00, 12, 'Toyota Fortuner', '2020-09-30'),
+('Aditi', 'Ghosh', 46000.00, 5, 'Renault Duster', '2021-01-05'),
+('Tarun', 'Mishra', 53000.00, 9, 'Nissan Sunny', '2019-02-10'),
+('Suman', 'Chand', 57000.00, 13, 'Tata Safari', '2020-12-01'),
+('Saurabh', 'Gupta', 59000.00, 16, 'Mahindra XUV300', '2018-07-15'),
+('Nikhil', 'Soni', 51000.00, 11, 'Maruti Suzuki Celerio', '2021-08-01'),
+('Rachna', 'Kaur', 47000.00, 7, 'Hyundai Santro', '2019-06-10'),
+('Deepak', 'Bedi', 52000.00, 10, 'Skoda Rapid', '2021-04-07'),
+('Shivani', 'Yadav', 54000.00, 12, 'Kia Sonet', '2020-02-19'),
+('Amit', 'Joshi', 56000.00, 14, 'Ford Endeavour', '2020-11-23'),
+('Anjali', 'Kumar', 50000.00, 8, 'Maruti Suzuki Vitara Brezza', '2019-12-10'),
+('Kiran', 'Sharma', 53000.00, 10, 'Tata Altroz', '2020-09-18'),
+('Aman', 'Verma', 46000.00, 6, 'Honda Jazz', '2021-03-15'),
+('Rita', 'Reddy', 49000.00, 9, 'Toyota Glanza', '2021-01-12'),
+('Anup', 'Chawla', 47000.00, 7, 'Volkswagen T-Roc', '2022-02-01'),
+('Suman', 'Singh', 52000.00, 10, 'Kia Carnival', '2021-10-05'),
+('Rohit', 'Gupta', 59000.00, 15, 'Hyundai Tucson', '2019-09-23'),
+('Neha', 'Iyer', 55000.00, 12, 'Tata Punch', '2020-11-10'),
+('Ravi', 'Chaudhary', 48000.00, 5, 'Honda Civic', '2021-06-18'),
+('Aakash', 'Singh', 53000.00, 8, 'Ford Mustang', '2022-03-05'),
+('Meena', 'Thakur', 45000.00, 6, 'Mahindra XUV500', '2020-02-25'),
+('Rohit', 'Sharma', 47000.00, 9, 'Maruti Suzuki WagonR', '2019-04-14'),
+('Suman', 'Singh', 52000.00, 10, 'Toyota Yaris', '2021-08-25'),
+('Shivendra', 'Patel', 56000.00, 14, 'Hyundai Kona', '2020-03-16');
+
+INSERT INTO Salesman (first_name, last_name, salary, car_sales_per_month, car_model_sold, hire_date)
+VALUES
+('Rohit', 'Verma', 52000.00, 11, 'Mahindra Marazzo', '2021-02-10'),
+('Meenal', 'Kumari', 48000.00, 6, 'Nissan Kicks', '2020-07-30');
